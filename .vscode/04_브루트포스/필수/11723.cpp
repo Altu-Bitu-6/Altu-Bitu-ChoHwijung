@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 typedef long long ll;
@@ -15,6 +16,15 @@ void printExistence(int num) {
     }
 }
 
+void changeSet(string cmd) {
+    if (cmd == "all") {
+        set = ONES;
+    }
+    else if (cmd == "empty") {
+        set = (ll)0;
+    }
+}
+
 void findSet(string cmd, int n) {
     if (cmd == "add") {
         set |= ((ll)1 << n);
@@ -24,12 +34,6 @@ void findSet(string cmd, int n) {
     }
     else if (cmd == "toggle") {
         set ^= ((ll)1 << n);
-    }
-    else if (cmd == "all") {
-        set = ONES;
-    }
-    else if (cmd == "empty") {
-        set = (ll)0;
     }
 }
 
@@ -45,14 +49,14 @@ int main() {
     cin >> n;
 
     while (n--) {
-        cin >> cmd >> num;
-
-        if (cmd == "check") {
-            printExistence(num);
-        }
+        cin >> cmd;
+        if (cmd == "all" || cmd =="empty") changeSet(cmd);
         else {
-            findSet(cmd, num);
+            cin >> num;
+            if (cmd == "check") printExistence(num);
+            else findSet(cmd, num);
         }
+
     }
 
 }

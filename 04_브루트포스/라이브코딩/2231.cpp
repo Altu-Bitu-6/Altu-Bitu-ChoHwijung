@@ -8,7 +8,7 @@ int bruteforce(int n) {
         int tmp = i; //현재의 생성자
         int sum = i; // 분해합 더해주기
         //자릿수 구하기
-        while (tmp) {
+        while (tmp) { //??
             sum += tmp % 10;
             tmp /= 10;
         }
